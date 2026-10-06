@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="mk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>За Тамара ❤️</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #ffd6e7, #fff0f6);
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            text-align: center;
+            z-index: 10;
+        }
+
+        button {
+            padding: 18px 40px;
+            font-size: 24px;
+            font-weight: bold;
+            border: none;
+            border-radius: 50px;
+            background: #ff4f9a;
+            color: white;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(255, 79, 154, 0.35);
+            transition: 0.3s;
+        }
+
+        button:hover {
+            transform: scale(1.08);
+            background: #ff2f87;
+        }
+
+        #message {
+            display: none;
+            font-size: 42px;
+            font-weight: bold;
+            color: #ff2384;
+            animation: appear 1.5s ease;
+            text-shadow: 0 3px 10px rgba(255, 35, 132, 0.2);
+        }
+
+        .heart {
+            position: fixed;
+            bottom: -50px;
+            font-size: 30px;
+            pointer-events: none;
+            animation: floatUp 4s linear forwards;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) scale(1) rotate(0deg);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(-110vh) scale(1.5) rotate(30deg);
+                opacity: 0;
+            }
+        }
+
+        @keyframes appear {
+            from {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <button id="button" onclick="love()">За Тамара ❤️</button>
+
+        <div id="message">
+            Te Sakam Lepoto Moja ❤️
+        </div>
+
+    </div>
+
+    <script>
+        function love() {
+
+            // Hide button
+            document.getElementById("button").style.display = "none";
+
+            // Show message
+            document.getElementById("message").style.display = "block";
+
+            // Create lots of hearts
+            for (let i = 0; i < 60; i++) {
+
+                setTimeout(() => {
+
+                    const heart = document.createElement("div");
+
+                    heart.classList.add("heart");
+
+                    heart.innerHTML = ["❤️", "💕", "💗", "💖", "💘"][Math.floor(Math.random() * 5)];
+
+                    heart.style.left = Math.random() * 100 + "vw";
+
+                    heart.style.fontSize =
+                        (20 + Math.random() * 35) + "px";
+
+                    heart.style.animationDuration =
+                        (3 + Math.random() * 3) + "s";
+
+                    document.body.appendChild(heart);
+
+                    // Remove heart after animation
+                    setTimeout(() => {
+                        heart.remove();
+                    }, 6000);
+
+                }, i * 80);
+            }
+        }
+    </script>
+
+</body>
+</html>
